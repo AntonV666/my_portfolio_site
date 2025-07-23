@@ -1,0 +1,19 @@
+help.txt
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.env
+.venv/
+ENV/
+env/
+venv/
+.idea/
+.vscode/
+.DS_Store
+*.log
+# Docker
+*.env
+*.db
+*.sqlite3
