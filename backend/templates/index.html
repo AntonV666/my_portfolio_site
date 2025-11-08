@@ -1,251 +1,310 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Портфолио Антона Вавилова — AI/ML/CV-инженер</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Можно подключить стиль Bootstrap или кастомный CSS для красоты -->
-    <link rel="stylesheet" href="/static/style.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            /* Серый фон + картинка */
-            background: #eaecef url('/static/images/background1.png') no-repeat center center fixed;
-            background-size: cover;
-            color: #222;
-        }
-        .container {
-            max-width: 950px;
-            margin: 40px auto;
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 0 18px #ddd;
-            padding: 40px;
-        }
-        .skills-list span {
-            background: #eef4fa;
-            border-radius: 8px;
-            padding: 7px 12px;
-            font-size: 0.8em;
-        }
-        .header { display: flex; align-items: center; gap: 32px; }
-        .photo { border-radius: 50%; width: 160px; height: 160px; object-fit: cover; border: 3px solid #ececec; box-shadow: 0 2px 12px #eee; }
-        h1 { margin-bottom: 4px; }
-        .contacts a { margin-right: 18px; text-decoration: none; color: #1774c5; font-weight: bold; }
-        .section { margin-top: 44px; }
-        .section h2 { color: #1963a6; margin-bottom: 14px; }
-        .skills-list { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;}
-        .skills-list span { background: #eef4fa; border-radius: 8px; padding: 7px 13px; font-size: 1em; }
-        .project { margin-bottom: 22px; }
-        .stack { color: #777; font-size: 0.98em; }
-        .project-title { font-weight: bold; font-size: 1.1em;}
-        .education, .hobbies { font-size: 1.01em; }
-        .footer {
-            background: #eaecef;
-            color: #888;
-            border-top: 1px solid #e3e9ee;
-            font-size: 0.98em;
-            text-align: center;
-            margin-top: 38px;
-            padding: 16px 0 0 0;
-        }
-        @media (max-width: 700px) {
-            .container { padding: 10px; }
-            .header { flex-direction: column; gap: 14px; }
-            .photo { width: 110px; height: 110px;}
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Антон Вавилов — AI/ML/CV-инженер</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Портфолио Антона Вавилова: AI/ML/CV-проекты, нейросотрудники и интеграции в Telegram и web." />
+  <meta property="og:title" content="Антон Вавилов — AI/ML/CV-инженер" />
+  <meta property="og:description" content="Компьютерное зрение, нейросотрудники, Telegram-боты, веб-интерфейсы. Реальные внедрения и демо." />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="/static/style.css" />
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #1963a6;
+      --accent: #0ea5e9;
+      --chip: #eef4fa;
+      --ring: #e5e7eb;
+      --shadow: 0 10px 24px rgba(0,0,0,.06);
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: var(--bg) url('/static/images/background4.png') no-repeat center/cover fixed;
+    }
+    a { color: var(--primary); text-decoration: none; }
+    .container {
+      max-width: 1024px;
+      margin: 32px auto;
+      padding: 18px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--ring);
+    }
+    .hero { display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 28px; align-items: center; }
+    .photo {
+      width: 160px; height: 160px; object-fit: cover; border-radius: 50%;
+      border: 4px solid #fff; box-shadow: 0 6px 24px rgba(0,0,0,.08);
+    }
+    h1 { margin: 0 0 6px; font-size: 28px; }
+    .role { color: var(--muted); font-size: 16px; margin-bottom: 14px; }
+    .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 14px; border-radius: 12px; border: 1px solid var(--ring);
+      background: #fff; transition: transform .06s ease, box-shadow .12s ease, background .2s;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(25,99,166,.15); }
+    .btn.primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .nav { margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 12px; font-size: 14px; }
+    .nav a { background: var(--chip); padding: 8px 12px; border-radius: 999px; border: 1px solid var(--ring); }
+    .section { margin-top: 26px; padding: 22px 24px; }
+    .section h2 { margin: 0 0 12px; color: var(--primary); font-size: 22px; }
+    .lead { line-height: 1.6; }
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+    .chip { background: var(--chip); border: 1px solid var(--ring); padding: 7px 12px; border-radius: 999px; font-size: 14px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .project { border: 1px solid var(--ring); border-radius: 14px; padding: 16px; background:#fff; }
+    .project h3 { margin: 0 0 6px; font-size: 18px; }
+    .meta { color: var(--muted); font-size: 14px; margin-bottom: 10px; }
+    .tri { display: grid; gap: 8px; font-size: 15px; line-height: 1.55; }
+    .tri b { color: var(--text); }
+    .stack { margin-top: 10px; color: var(--muted); font-size: 14px; }
+    .list ul { margin: 8px 0 0 18px; line-height: 1.6; }
+    .edu li { margin-bottom: 6px; }
+    .video-wrap { margin: 14px 0 0; text-align: center; }
+    video { max-width: 100%; border-radius: 12px; border: 1px solid var(--ring); }
+    .footer {
+      text-align: center; margin: 22px 0; color: var(--muted); font-size: 13px;
+    }
+    @media (max-width: 820px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .photo { margin: 0 auto; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-    <!-- Шапка с фото, ФИО и контактами -->
-    <div class="header">
-        <!-- Фотография: положи файл photo.png в static/images/ -->
-        <img src="/static/images/photo.png" alt="Антон Вавилов" class="photo">
-        <div>
-            <h1>Антон Вавилов</h1>
-            <div>AI/ML/CV-инженер &mdash; Разработчик нейронных сетей</div>
-            <div class="contacts" style="margin-top:14px; line-height:1.8;">
-                <div>
-                    <b>Telegram:</b>
-                    <a href="https://t.me/AntonVavilov" target="_blank" style="text-decoration:none; color:#1963a6;">
-                        @AntonVavilov
-                    </a>
-                </div>
-                <div>
-                    <b>e-mail:</b>
-                    <a href="mailto:antonv31071978@gmail.com" style="text-decoration:none; color:#1963a6;">
-                        antonv31071978@gmail.com
-                    </a>
-                </div>
-                <div>
-                    <b>Tel:</b>
-                    <a href="tel:+79874942807" style="text-decoration:none; color:#1963a6;">
-                        +7-987-49-42-807
-                    </a>
-                </div>
-                <div>
-                    <b>GitHub:</b>
-                    <a href="https://github.com/AntonV666" target="_blank" style="text-decoration:none; color:#1963a6;">
-                        github.com/AntonV666
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+  <div class="container">
 
-    <!-- О себе -->
-    <div class="section">
-        <h2>Обо мне</h2>
-        <div>
-            <p>
-                Я — разработчик нейронных сетей, специализируюсь на практическом применении искусственного интеллекта, создании нейросотрудников и AI-агентов, а также их интеграции в Telegram-боты и web-интерфейсы. Мой профессиональный фокус — задачи компьютерного зрения (CV), автоматизация бизнес-процессов и внедрение современных ИИ-решений в реальный сектор. Владею базовыми DevOps-практиками: развёртывание AI/ML-проектов через DockerHub, опыт автоматизации деплоя с использованием GitHub Actions и Watchtower.
+    <!-- HERO -->
+    <section class="card hero">
+      <img src="/static/images/photo.png" alt="Антон Вавилов" class="photo" />
+      <div>
+        <h1>Антон Вавилов</h1>
+        <div class="role">AI/ML/CV-инженер, разработчик нейросотрудников и AI-агентов</div>
+        <div class="lead">
+        Помогаю компаниям внедрять искусственный интеллект в реальные процессы.
+        Выполняю проекты в области компьютерного зрения для автоматического распознавания объектов и принятия решений на основе данных.
+        Разрабатываю AI-ассистентов и сервисы автоматизации, интегрирую ИИ в Telegram-ботов и веб-приложения.
+        Настраиваю надёжное развёртывание и сопровождение решений с использованием Docker и CI/CD (GitHub Actions, Watchtower).
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="https://t.me/AntonVavilov" target="_blank">Telegram</a>
+          <a class="btn" href="https://github.com/AntonV666" target="_blank">GitHub</a>
+          <a class="btn" href="mailto:antonv31071978@gmail.com">antonv31071978@gmail.com</a>
+          <a class="btn" href="tel:+79874942807">+7-987-49-42-807</a>
+        </div>
+        <nav class="nav">
+          <a href="#about">Обо мне</a>
+          <a href="#skills">Навыки</a>
+          <a href="#projects">Проекты</a>
+          <a href="#intern">Стажировки</a>
+          <a href="#edu">Образование</a>
+          <a href="#hobby">Хобби</a>
+          <a href="/static/sertificate/sertificates.html" target="_blank">Сертификаты</a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ОБО МНЕ -->
+    <section id="about" class="card section">
+      <h2>Обо мне</h2>
+      <p class="lead">
+        Я - разработчик нейронных сетей, специализируюсь на практическом применении искусственного интеллекта, создании нейросотрудников и 
+        AI-агентов, а также их интеграции в Telegram-боты и web-интерфейсы. Мой профессиональный фокус — задачи компьютерного зрения (CV), 
+        автоматизация бизнес-процессов и внедрение современных ИИ-решений в реальный сектор. Владею базовыми DevOps-практиками: 
+        развёртывание AI/ML-проектов через DockerHub, опыт автоматизации деплоя с использованием GitHub Actions и Watchtower.
+      </p>
+      <p class="lead">
+        В 2025 году разработал и внедрил на промышленном производстве систему компьютерного зрения для автоматической сортировки пластиковых деталей. 
+        Система детектирует дефекты деталей в режиме реального времени, классифицирует их на годные и не годные.
+      </p>
+      <div class="video-wrap">
+        <video controls poster="/static/images/video_poster.png">
+          <source src="/static/images/sakura_demo.mp4" type="video/mp4" />
+          Ваш браузер не поддерживает видео.
+        </video>
+        <div style="font-size:13px; color:var(--muted); margin-top:6px;">Демонстрация тестирования системы</div>
+      </div>
+      <p class="lead">
+        Сотрудничаю с Университетом искусственного интеллекта (УИИ) как ментор и тимлид, курирую учебные и прикладные проекты.
+        Обучался в Университете искусственного интеллекта по программам Data Science/ML (2024), ChatGPT Professional и Python-разработчик (2025).
+      </p>
+      <p class="lead">
+        <b>Пример Telegram-ботов:</b><br>
+        <a href="https://t.me/hh_jobs1_bot" target="_blank">TG-бот для поиска вакансий на hh.ru</a><br>
+        <a href="https://t.me/AntonV_OR_bot" target="_blank">TG-бот для превращения фото в карандашный рисунок</a><br>
+
+        <b>Демонстрации web-приложений:</b><br>
+        <a href="http://5.35.81.125:8001/" target="_blank">Демо-версия программы AI_Kassa</a><br>
+        <a href="http://5.35.81.125:8002/" target="_blank">Детекция блюд. Программа AI_Kassa. Пароль/логин demo/demo123</a><br>
+        <a href="http://5.35.81.125/" target="_blank">Портфолио Антона Вавилова</a><br>
+        </p>
+
+      <p class="lead">Рассматриваю предложения о сотрудничестве в формате удалённой занятости.</p>
+    </section>
+
+    <!-- ПРОЕКТЫ -->
+    <section id="projects" class="card section">
+      <h2>Опыт и реализованные проекты</h2>
+
+      <div class="grid">
+
+        <!-- САКУРА -->
+        <article class="project">
+          <h3>Система компьютерного зрения</h3>
+          <div class="meta">Апрель — Октябрь 2025 • ООО «Сакура»</div>
+          <div class="tri">
+            <div><b>Задача:</b> Производителю изделий из пластика требовалась автоматизированная система сортировки продукции в реальном 
+                времени. Ключевые задачи: выявлять сложные производственные дефекты (незаливы, сколы, царапины, потёртости, дефекты по цвету),
+                сортировать детали на годные и негодные, интегрировать решение с производственным оборудованием. 
+                Сложность заключалась в полупрозрачности деталей, необходимости детекции разных типов дефектов и контроля цвета, 
+                а также в нестабильности положения детали — требовалось анализировать изделие с нескольких ракурсов..</div>
+            <div><b>Решение:</b> Разработал и внедрил систему компьютерного зрения на базе искусственного интеллекта с поддержкой 
+                мультиклассовой классификации дефектов и цвета изделий. В качестве решения была применена нейросетевая архитектура YOLOv8, 
+                обученная на собранном и размеченном датасете с использованием Roboflow (разметка). Для обработки изображений с нескольких 
+                ракурсов интегрирован поворотный стол и реализована синхронизация с промышленным роботом посредством Arduino, 
+                обеспечивающая автоматическую подачу управляющих сигналов между ИИ-системой и оборудованием. Вся логика и коммуникация 
+                между модулями реализована на Python. По просьбе заказчика, система интегрирована в Telegram-бота, 
+                разработан web-интерфейс..</div>
+            <div><b>Итог:</b> В результате внедрения заказчик получил полностью автоматизированную систему сортировки деталей, 
+                способную в реальном времени выявлять широкий спектр дефектов и классифицировать изделия по признакам цвета и повреждений. 
+                Решение позволило повысить качество выпускаемой продукции, минимизировать влияние человеческого фактора, а также сократить 
+                издержки на ручной контроль качества. Система успешно интегрирована в производственный процесс и проходит промышленную 
+                эксплуатацию.</div>
+            <div><b>Отзыв работодателя:</b><a href="/static/sertificate/Сакура_отзыв.jpg" target="_blank"> Посмотреть отзыв</a></div>
+          <div class="stack"><b>Технологии:</b> Python, YOLOv8, Roboflow, OpenCV, Arduino, FastAPI, Aiogram</div>
+        </article>
+
+        <!-- AI_KASSA -->
+        <article class="project">
+          <h3>AI_Kassa — распознавание блюд на подносе</h3>
+          <div class="meta">Август — Ноябрь 2025 • стартап</div>
+          <div class="tri">
+            <div><b>Задача:</b> Внедрить систему автоматического распознавания блюд в точках питания: детекция блюд
+              на подносе, формирование состава и стоимости заказа, интеграция с веб-интерфейсом и Telegram-ботом.</div>
+            <div><b>Решение:</b> Разметка и обучение модели <b>YOLOv11</b> (CVAT), доработка платформы: админ-панель,
+              наполнение БД. Реализованы: демо-веб-приложение, приложение детекции блюд на подносе
+              и Telegram-бот. Всё развёрнуто на VPS с использованием <b>Docker</b>.</div>
+            <div><b>Итог:</b> Получена точность распознавания <b>до 99%</b> на тестовом датасете. Доступны онлайн-демо и боты,
+              система готова к интеграции с кассовым ПО и расширению каталога блюд.</div>
+          </div>
+          <div class="stack">
+            <b>Демо:</b> <a href="http://5.35.81.125:8001/" target="_blank">AI Kassa test web</a> •
+            <a href="http://5.35.81.125:8002/" target="_blank">AI Kassa Web (детекция на подносе)</a><br/>
+            <b>Технологии:</b> Python, YOLOv11, CVAT, FastAPI, OpenCV, Aiogram, Docker, GitHub
+          </div>
+        </article>
+
+        <!-- ПЭТ-ПРОЕКТ -->
+        <article class="project">
+          <h3>Нейроконсультант отдела продаж (ПЭТ/диплом)</h3>
+          <div class="meta">В процессе</div>
+          <div class="tri">
+            <div><b>Задача:</b> Автоматизировать обработку входящих запросов пользователей, консультаций по продукту (услугам), 
+                стоимости услуг и выставлении счетов.</div>
+            <div><b>Решение:</b> GPT-ассистент с генерацией ответов и отчётности, выставлении счетов; API-сервис на FastAPI; TG-бот.</div>
+            <div><b>Итог:</b> Прототип в разработке, запланирована интеграция с CRM, Telegram и платежными системами.</div>
+          </div>
+          <div class="stack"><b>Технологии:</b> Python, FastAPI, OpenAI GPT, LangChain, Docker</div>
+        </article>
+
+        <!-- Телеграм-боты (примеры) -->
+        <article class="project">
+          <b>Пример Telegram-ботов:</b><br>
+            <a href="https://t.me/hh_jobs1_bot" target="_blank">TG-бот для поиска вакансий на hh.ru</a><br>
+            <a href="https://t.me/AntonV_OR_bot" target="_blank">TG-бот для превращения фото в карандашный рисунок</a><br><br>
+
+            <b>Демонстрации web-приложений:</b><br>
+            <a href="http://5.35.81.125:8001/" target="_blank">Демо-версия программы AI_Kassa</a><br>
+            <a href="http://5.35.81.125:8002/" target="_blank">Детекция блюд. Программа AI_Kassa. Пароль/логин demo/demo123</a><br>
+            <a href="http://5.35.81.125/" target="_blank">Портфолио Антона Вавилова</a><br>
             </p>
-            <p>
-                В настоящее время завершаю реализацию первого коммерческого проекта в области CV: разработал и внедрил на производстве систему компьютерного зрения на базе искусственного интеллекта. Решение автоматически детектирует дефекты деталей в режиме реального времени, классифицирует их на годные и не годные, а также передаёт управляющие сигналы на производственное оборудование. Система интегрирована у заказчика и проходит стадию промышленного тестирования.
-            </p>
-            <div style="margin: 24px 0; text-align: center;">
-                <video width="500" controls poster="/static/images/video_poster.png">
-                    <source src="/static/images/sakura_demo.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео.
-                </video>
-                <div style="font-size:0.93em; color:#444; margin-top:8px;">
-                    Демонстрация тестирования системы компьютерного зрения
-                </div>
-            </div> 
-            <p>
-                Работаю в Университете искусственного интеллекта (УИИ) в качестве ментора и тимлида, сопровождаю индивидуальные AI-проекты слушателей и консультирую по внедрению искусственного интеллекта в бизнес-процессы.
-            </p>
-            <p>
-                Параллельно продолжаю обучение в УИИ на программах ChatGPT Professional (разработка нейросотрудников) и Python-разработчик. В 2024 году окончил обучение по направлению Data Science, нейронные сети и машинное обучение, в рамках которого прошёл ряд стажировок и получил глубокий практический опыт в задачах CV, AI и создании нейросотрудников.
-            </p>
-            <p>
-                Постоянно совершенствуюсь в сфере искусственного интеллекта, компьютерного зрения, разработки AI-агентов и Telegram-ботов. Мною реализованы и размещены на VPS несколько функциональных Telegram-ботов:
-                <a href="https://t.me/AntonV_OR_bot" target="_blank">AntonV_OR_bot</a>,
-                <a href="https://t.me/Detected_sakura_bot" target="_blank">Detected_sakura_bot</a>.
-            </p>
-            <p>
-                Данные проекты деплоены с использованием DockerHub и автоматизированного развёртывания на сервере (GitHub Actions и Watchtower), что подтверждает мой высокий уровень владения DevOps-практиками для production-ready AI-решений.
-            </p>
-            <p>
-                Рассматриваю предложения о сотрудничестве в формате удалённой занятости.
-            </p>
-        </div>
-    </div>
+        </article>
 
-    <!-- Навыки и инструменты -->
-    <div class="section">
-        <h2>Ключевые навыки и инструменты</h2>
-        <div class="skills-list">
-            <span>Python</span>
-            <span>FastAPI</span>
-            <span>Django</span>
-            <span>Telegram Bot (Aiogram)</span>
-            <span>GitHub Actions и Watchtower</span>
-            <span>Docker</span>
-            <span>Linux</span>
-            <span>OpenAI GPT (ChatGPT)</span>
-            <span>LangChain</span>
-            <span>Faiss</span>
-            <span>TensorFlow</span>
-            <span>Keras</span>
-            <span>YOLO</span>
-            <span>OpenCV</span>
-            <span>EasyOCR</span>
-            <span>Pandas</span>
-            <span>NumPy</span>
-            <span>AutoML</span>
-            <span>Whisper</span>
-            <span>Git</span>
-            <span>Label Studio</span>
-            <span>Roboflow</span>
-            <span>Arduino</span>
-        </div>
-    </div>
+      </div>
+    </section>
 
-    <!-- Коммерческий опыт -->
-    <div class="section">
-        <h2>Коммерческий опыт</h2>
-        <div class="project">
-            <span class="project-title">Система компьютерного зрения (2025, промышленное предприятие)</span><br>
-            <b>Задача:</b><br>
-            Производителю изделий из пластика требовалась автоматизированная система сортировки продукции в реальном времени. Ключевые задачи: выявлять сложные производственные дефекты (незаливы, сколы, царапины, потёртости, дефекты по цвету), сортировать детали на годные и негодные, интегрировать решение с производственным оборудованием. Сложность заключалась в полупрозрачности деталей, необходимости детекции разных типов дефектов и контроля цвета, а также в нестабильности положения детали — требовалось анализировать изделие с нескольких ракурсов.
-            <br><br>
-            <b>Решение:</b><br>
-            Разработал и внедрил систему компьютерного зрения на базе искусственного интеллекта с поддержкой мультиклассовой классификации дефектов и цвета изделий. В качестве решения была применена нейросетевая архитектура YOLOv8, обученная на собранном и размеченном датасете с использованием Roboflow (разметка). Для обработки изображений с нескольких ракурсов интегрирован поворотный стол и реализована синхронизация с промышленным роботом посредством Arduino, обеспечивающая автоматическую подачу управляющих сигналов между ИИ-системой и оборудованием. Вся логика и коммуникация между модулями реализована на Python. По просьбе заказчика, система интегрирована в Telegram-бота, разработан web-интерфейс.
-            <br><br>
-            <b>Итог:</b><br>
-            В результате внедрения заказчик получил полностью автоматизированную систему сортировки деталей, способную в реальном времени выявлять широкий спектр дефектов и классифицировать изделия по признакам цвета и повреждений. Решение позволило повысить качество выпускаемой продукции, минимизировать влияние человеческого фактора, а также сократить издержки на ручной контроль качества. Система успешно интегрирована в производственный процесс и проходит промышленную эксплуатацию.
-            <div class="stack"><b>Технологии:</b> Python, YOLOv8, Roboflow, Arduino, Aiogram, FastAPI</div>
-        </div>
-    </div>
+    <!-- СТАЖИРОВКИ -->
+    <section id="intern" class="card section list">
+      <h2>Стажировки</h2>
+      <ul>
+        <li><b>УК в сфере ЖКХ</b> — Нейроконсультант для обработки обращений граждан. <span class="meta">Python, GPT, LangChain</span></li>
+        <li><b>ФГБУ «НМИЦ ТПМ» Минздрава РФ</b> — Анализ биохимических анализов по сканам. <span class="meta">Python, YOLO, EasyOCR</span></li>
+        <li><b>ПМХ-Втормет</b> — Детекция опасных объектов на перегружателе лома. <span class="meta">YOLO, Label Studio, Python</span></li>
+        <li><b>«Святобор»</b> — Маршрут робота, детекция препятствий, координаты посадки. <span class="meta">YOLO, Roboflow, Python</span></li>
+        <li><b>Навигация</b> — Модель распознавания речи. <span class="meta">Python, Whisper</span></li>
+      </ul>
+    </section>
 
-    <!-- ПЭТ-проект -->
-    <div class="section">
-        <h2>ПЭТ-проект</h2>
-        <div class="project">
-            <span class="project-title">Нейроконсультант отдела продаж (дипломный проект, в процессе)</span><br>
-            <span>GPT-ассистент для автоматизации процессов продаж: обработка запросов, генерация предложений, интерактивный диалог.</span>
-            <div class="stack"><b>Технологии:</b> Python, FastAPI, GPT-4, LangChain, Docker</div>
-        </div>
-    </div>
+    <!-- НАВЫКИ -->
+    <section id="skills" class="card section">
+      <h2>Ключевые навыки и инструменты</h2>
+      <div class="skills">
+        <span class="chip">Python</span>
+        <span class="chip">FastAPI</span>
+        <span class="chip">Django</span>
+        <span class="chip">Aiogram (Telegram Bot)</span>
+        <span class="chip">Git</span>
+        <span class="chip">Docker</span>
+        <span class="chip">Linux</span>
+        <span class="chip">OpenAI GPT (ChatGPT)</span>
+        <span class="chip">LangChain</span>
+        <span class="chip">Faiss</span>
+        <span class="chip">TensorFlow</span>
+        <span class="chip">Keras</span>
+        <span class="chip">YOLO (v8/v11)</span>
+        <span class="chip">OpenCV</span>
+        <span class="chip">EasyOCR</span>
+        <span class="chip">Pandas</span>
+        <span class="chip">NumPy</span>
+        <span class="chip">Whisper</span>
+        <span class="chip">CVAT</span>
+        <span class="chip">Label Studio</span>
+        <span class="chip">Roboflow</span>
+        <span class="chip">Arduino</span>
+      </div>
+    </section>
 
-    <!-- Стажировки -->
-    <div class="section">
-        <h2>Стажировки</h2>
-        <div class="project">
-            <span class="project-title">Управляющая компания с сфере ЖКХ</span><br>
-            <span>Разработка нейро-консультанта для автоматизированной обработки обращений граждан в сфере ЖКХ (В процессе).</span>
-            <div class="stack"><b>Технологии:</b> Python, GPT, LangChain</div>
-        </div>
-        <div class="project">
-            <span class="project-title">ФГБУ "НМИЦ ТПМ" Минздрава РФ</span><br>
-            <span>Анализ биохимических анализов крови по сканированным документам.</span>
-            <div class="stack"><b>Технологии:</b> Python, YOLO, EasyOCR</div>
-        </div>
-        <div class="project">
-            <span class="project-title">ПМХ-Втормет</span><br>
-            <span>Детекция опасных объектов на перегружателе лома. Полный цикл: сбор данных, разметка, обучение.</span>
-            <div class="stack"><b>Технологии:</b> YOLO, Label Studio, Python</div>
-        </div>
-        <div class="project">
-            <span class="project-title">ЛесоВосстановительная робототехника "Святобор"</span><br>
-            <span>Оптимальный маршрут движения робота, детекция препятствий, генерация координат посадки.</span>
-            <div class="stack"><b>Технологии:</b> YOLO, Roboflow, Python</div>
-        </div>
-        <div class="project">
-            <span class="project-title">Навигация</span><br>
-            <span>Разработка модели распознавания речи.</span>
-            <div class="stack"><b>Технологии:</b> Python, Whisper</div>
-        </div>
-    </div>
+    <!-- ОБРАЗОВАНИЕ -->
+    <section id="edu" class="card section list edu">
+      <h2>Образование</h2>
+      <ul>
+        <li>Университет искусственного интеллекта (2026): Python-разработчик</li>
+        <li>Университет искусственного интеллекта (2026): ChatGPT Professional (разработка нейросотрудников)</li>
+        <li>Университет искусственного интеллекта (2024): Data Science, нейросети, ИИ</li>
+        <li>УГАТУ (2001): факультет авиационные двигатели</li>
+      </ul>
+    </section>
 
-    <!-- Образование -->
-    <div class="section education">
-        <h2>Образование</h2>
-        <ul>
-            <li>Университет искусственного интеллекта (2025): Python-разработчик</li>
-            <li>Университет искусственного интеллекта (2025): ChatGPT Professional (разработка нейросотрудников)</li>
-            <li>Университет искусственного интеллекта (2024): Data Science, нейросети, искусственный интеллект</li>
-            <li>УГАТУ (2001): факультет авиационные двигатели</li>
-        </ul>
-    </div>
+    <!-- СЕРТИФИКАТЫ -->
+    <section class="card section">
+      <h2>Сертификаты и благодарственные письма</h2>
+      <p>Смотреть: <a href="/static/sertificate/sertificates.html" target="_blank"><b>перейти к списку</b></a>.</p>
+    </section>
 
-    <!-- Сертификаты и благодарственные письма -->
-    <div class="section sertificates">
-        <h2>Сертификаты и благодарственные письма можно посмотреть <a href="/static/sertificate/sertificates.html" target="_blank" style="color:#1963a6; font-weight:bold;">здесь</a>.</h2>
-    </div>
+    <!-- ХОББИ -->
+    <section id="hobby" class="card section">
+      <h2>Хобби</h2>
+      <p>Горные лыжи, инвестиции на фондовом рынке.</p>
+    </section>
 
-    <!-- Хобби -->
-    <div class="section hobbies">
-        <h2>Хобби</h2>
-        <div>Горные лыжи, инвестиции на фондовом рынке.</div>
-    </div>
-    <!-- Футер -->
-    <div class="footer">
-        Данный сайт-портфолио реализован лично на FastAPI (backend) и Jinja2/HTML (frontend)<br>
-    </div>
-</div>
+    <!-- ФУТЕР -->
+    <footer class="footer">
+      Сайт реализован на FastAPI (backend) и Jinja2/HTML (frontend). © Антон Вавилов
+    </footer>
+
+  </div>
 </body>
 </html>

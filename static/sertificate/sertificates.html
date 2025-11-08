@@ -1,65 +1,98 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Сертификаты и благодарственные письма — Антон Вавилов</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body { font-family: Arial, sans-serif; background: #f5f7fa; margin: 0; color: #222; }
-        .container { max-width: 900px; margin: 40px auto; background: #fff; border-radius: 14px; box-shadow: 0 0 14px #dde; padding: 36px; }
-        h1 { color: #1963a6; margin-bottom: 18px;}
-        .cert-grid { display: flex; flex-wrap: wrap; gap: 30px 20px; margin-top: 36px;}
-        .cert-card { width: 220px; background: #f2f6fb; border-radius: 8px; box-shadow: 0 0 6px #e7e7e7; text-align: center; padding: 16px;}
-        .cert-card img { max-width: 190px; max-height: 140px; border-radius: 6px; margin-bottom: 8px;}
-        .cert-card a { display: block; color: #1774c5; margin-top: 6px; font-size: 0.98em; text-decoration: none;}
-        .cert-card a:hover { text-decoration: underline; }
-        .back { margin: 18px 0 0 0; display: inline-block; color: #444; text-decoration: none;}
-        .back:hover { color: #1774c5; text-decoration: underline;}
-        @media (max-width:700px) {
-            .container { padding:10px;}
-            .cert-card { width: 100%; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Сертификаты и благодарственные письма — Антон Вавилов</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: Arial, sans-serif; background:#f5f7fa; margin:0; color:#222; }
+    .container {
+      max-width: 1000px; margin:40px auto; background:#fff; border-radius:14px;
+      box-shadow:0 0 14px #dde; padding:36px;
+    }
+    h1 { color:#1963a6; margin:0 0 18px; }
+    /* Сетка: по 3 карточки в ряд */
+    .cert-grid {
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:24px;
+      margin-top:24px;
+    }
+    .cert-card {
+      background:#f2f6fb; border-radius:10px; box-shadow:0 0 6px #e7e7e7;
+      text-align:center; padding:16px;
+    }
+    .cert-card img {
+      width:100%; height:140px; object-fit:cover;
+      border-radius:8px; margin-bottom:8px;
+    }
+    .cert-card .title { font-size:0.98rem; margin:6px 0 4px; }
+    .cert-card a { display:inline-block; color:#1774c5; font-size:0.95rem; text-decoration:none; }
+    .cert-card a:hover { text-decoration:underline; }
+    .back { margin-top:22px; display:inline-block; color:#444; text-decoration:none; }
+    .back:hover { color:#1774c5; text-decoration:underline; }
+
+    /* Адаптив: 2 колонки на планшете, 1 на телефоне */
+    @media (max-width: 900px) { .cert-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .container { padding:14px; } .cert-grid { grid-template-columns: 1fr; } }
+  </style>
 </head>
 <body>
-<div class="container">
+  <div class="container">
     <h1>Сертификаты и благодарственные письма</h1>
-        <!-- Сертификат Data Science -->
-        <div class="cert-card">
-            <img src="/static/sertificate/icon_datascience.png" alt="Сертификат Data Science" style="max-height:90px;">
-            <div>Data Science (УИИ, 2024)</div>
-            <a href="/static/sertificate/Сертификат_Data_Science_Вавилов.pdf" target="_blank">Открыть PDF</a>
-        </div>
-        <!-- Втормет — перегружатель лома -->
-        <div class="cert-card">
-            <img src="/static/sertificate/icon_vtormet.png" alt="Втормет" style="max-height:90px;">
-            <div>Благодарственное письмо «Втормет»</div>
-            <a href="/static/sertificate/Благодарственное_письмо_Втормет.pdf" target="_blank">Открыть PDF</a>
-        </div>
-        <!-- НМИЦ ТПМ — биохим анализы -->
-        <div class="cert-card">
-            <img src="/static/sertificate/icon_nmiz.png" alt="НМИЦ ТПМ" style="max-height:90px;">
-            <div>Благодарственное письмо «НМИЦ ТПМ»</div>
-            <a href="/static/sertificate/Благодарственное_письмо_НМИЦ_ТПМ.pdf" target="_blank">Открыть PDF</a>
-        </div>
-        <!-- Робототехника -->
-        <div class="cert-card">
-            <img src="/static/sertificate/icon_robot.png" alt="Робототехника" style="max-height:90px;">
-            <div>Благодарственное письмо «Робототехника»</div>
-            <a href="/static/sertificate/Благодарственное_письмо_Робототехника.pdf" target="_blank">Открыть PDF</a>
-        </div>
-        <!-- АЙТИОН — навигация -->
-        <div class="cert-card">
-            <img src="/static/sertificate/icon_navigation.png" alt="АЙТИОН" style="max-height:90px;">
-            <div>Благодарственное письмо «АЙТИОН»</div>
-            <a href="/static/sertificate/Благодарственное_письмо_АЙТИОН.pdf" target="_blank">Открыть PDF</a>
-        </div>
-        <div class="cert-card">
-            <img src="/static/sertificate/GPTs-агенты.png" alt="Сертификат GPTs-агенты">
-            <div>Сертификат (Академия маркетинга, 2025)</div>
-            <a href="/static/sertificate/GPTs-агенты.png" target="_blank">Открыть</a>
-        </div>
-        <a href="/" class="back">← Вернуться к портфолио</a>
-</div>
+
+    <div class="cert-grid">
+      <!-- Отзыв «Сакура» -->
+      <div class="cert-card">
+        <img src="/static/sertificate/icon_sakura.png" alt="Сакура отзыв">
+        <div class="title">Сакура отзыв</div>
+        <a href="/static/sertificate/sakura_otziv.png" target="_blank" rel="noopener">Открыть</a>
+      </div>
+
+      <!-- Сертификат Data Science -->
+      <div class="cert-card">
+        <img src="/static/sertificate/icon_datascience.png" alt="Data Science (УИИ, 2024)">
+        <div class="title">Data Science (УИИ, 2024)</div>
+        <a href="/static/sertificate/Сертификат_Data_Science_Вавилов.pdf" target="_blank" rel="noopener">Открыть PDF</a>
+      </div>
+
+      <!-- Втормет — перегружатель лома -->
+      <div class="cert-card">
+        <img src="/static/sertificate/icon_vtormet.png" alt="Благодарственное письмо «Втормет»">
+        <div class="title">Благодарственное письмо «Втормет»</div>
+        <a href="/static/sertificate/Благодарственное_письмо_Втормет.pdf" target="_blank" rel="noopener">Открыть PDF</a>
+      </div>
+
+      <!-- НМИЦ ТПМ — биохим анализы -->
+      <div class="cert-card">
+        <img src="/static/sertificate/icon_nmiz.png" alt="Благодарственное письмо «НМИЦ ТПМ»">
+        <div class="title">Благодарственное письмо «НМИЦ ТПМ»</div>
+        <a href="/static/sertificate/Благодарственное_письмо_НМИЦ_ТПМ.pdf" target="_blank" rel="noopener">Открыть PDF</a>
+      </div>
+
+      <!-- Робототехника -->
+      <div class="cert-card">
+        <img src="/static/sertificate/icon_robot.png" alt="Благодарственное письмо «Робототехника»">
+        <div class="title">Благодарственное письмо «Робототехника»</div>
+        <a href="/static/sertificate/Благодарственное_письмо_Робототехника.pdf" target="_blank" rel="noopener">Открыть PDF</a>
+      </div>
+
+      <!-- АЙТИОН — навигация -->
+      <div class="cert-card">
+        <img src="/static/sertificate/icon_navigation.png" alt="Благодарственное письмо «АЙТИОН»">
+        <div class="title">Благодарственное письмо «АЙТИОН»</div>
+        <a href="/static/sertificate/Благодарственное_письмо_АЙТИОН.pdf" target="_blank" rel="noopener">Открыть PDF</a>
+      </div>
+
+      <!-- Академия маркетинга — сертификат -->
+      <div class="cert-card">
+        <img src="/static/sertificate/GPTs-агенты.png" alt="Сертификат (Академия маркетинга, 2025)">
+        <div class="title">Сертификат (Академия маркетинга, 2025)</div>
+        <a href="/static/sertificate/GPTs-агенты.png" target="_blank" rel="noopener">Открыть</a>
+      </div>
+    </div>
+
+    <a href="/" class="back">← Вернуться к портфолио</a>
+  </div>
 </body>
 </html>
